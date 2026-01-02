@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#020408]"> <!-- Darker, deeper black/navy -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Bamidele Musibau, a Computer Engineering graduate and Full Stack Architect specializing in FinTech systems.">
+    <title>Bamidele Musibau | FinTech Solutions Architect</title>
+
+
+
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f3ff',  /* Cyan: Tech/Data */
+                        'fintech-gold': '#ffd700', /* Gold: Finance/Value */
+                        'neon-green': '#00ff9d', /* Success/Uptime */
+                        'dark-tide': '#050a14',  /* Deep Navy Background */
+                        'cyber-glass': 'rgba(5, 10, 20, 0.9)'
+                    },
+                    fontFamily: {
+                        'cyber': ['"Rajdhani"', 'sans-serif'],
+                        'mono': ['"Fira Code"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neon-blue-glow': '0 0 15px rgba(0, 243, 255, 0.3)',
+                        'gold-glow': '0 0 15px rgba(255, 215, 0, 0.3)',
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="text-slate-300 font-cyber overflow-x-hidden bg-grid-pattern bg-[size:50px_50px]">
+
+    <!-- Visual Overlays -->
+    <div class="scanlines"></div>
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-10 opacity-30"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark-tide/90 backdrop-blur-md border-b border-white/10 p-4 transition-all duration-300"
+        id="main-nav">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4 group cursor-pointer">
+                <div
+                    class="w-10 h-10 bg-fintech-gold/10 rounded-none border border-fintech-gold flex items-center justify-center relative overflow-hidden">
+                    <span class="font-mono font-bold text-fintech-gold z-10">SM</span>
+                </div>
+                <span class="text-xl font-bold tracking-widest text-white">BAMIDELE.<span
+                        class="text-fintech-gold">MUSIBAU</span></span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-sm font-mono hover:text-neon-blue transition-colors tracking-wider">[01.
+                    PROFILE]</a>
+                <a href="#skills"
+                    class="text-sm font-mono hover:text-fintech-gold transition-colors tracking-wider">[02. STACK]</a>
+                <a href="#contact" class="text-sm font-mono hover:text-neon-green transition-colors tracking-wider">[03.
+                    UPLINK]</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-2 border border-slate-700 px-4 py-2 bg-slate-900/50">
+                <span class="text-neon-green font-mono text-xs">SYS.UPTIME:</span>
+                <span id="xp-counter" class="text-white font-bold font-mono text-lg">99.9%</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+        <section id="about"
+            class="min-h-screen flex flex-col items-center justify-center px-4 pt-20 relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div
+                class="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-fintech-gold/30 to-transparent">
+            </div>
+
+            <div class="text-center max-w-5xl z-10 relative">
+                <div
+                    class="inline-flex items-center gap-2 mb-8 px-4 py-1 bg-neon-blue/5 border-l-2 border-neon-blue text-neon-blue tracking-widest text-xs font-bold animate-fade-in font-mono">
+                    <span class="w-2 h-2 bg-neon-blue rounded-full animate-ping"></span>
+                    SYSTEM STATUS: TRADING ACTIVE
+                </div>
+
+                <h1
+                    class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight animate-fade-in delay-100">
+                    ENGINEERING THE<br>
+                    <span class="text-fintech-gold typewriter" data-text="FUTURE OF FINANCE"></span>
+                    <span class="animate-blink text-fintech-gold">_</span>
+                </h1>
+
+                <p
+                    class="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-200">
+                    <span class="text-white font-semibold">Computer Engineering Graduate</span> crafting
+                    high-performance financial infrastructure.
+                    Proven track record optimizing transaction systems for <span class="text-fintech-gold font-bold">Top
+                        Nigeria Banks & FinTechs</span>.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-6 animate-fade-in delay-300">
+                    <a href="#contact" onmouseenter="addXP(50)" onclick="burstEffect(event); addXP(500)"
+                        class="group relative px-10 py-4 bg-fintech-gold text-dark-tide font-bold hover:bg-white transition-all duration-300 overflow-hidden skew-x-[-10deg]">
+                        <span class="relative block skew-x-[10deg]">INITIATE PROTOCOL</span>
+                    </a>
+                    <a href="#skills" onmouseenter="addXP(25)"
+                        class="px-10 py-4 border border-slate-600 text-slate-300 hover:border-neon-blue hover:text-neon-blue transition-all duration-300 skew-x-[-10deg]">
+                        <span class="block skew-x-[10deg] font-mono text-sm">VIEW ARCHITECTURE</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills / Loadout Section -->
+        <section id="skills" class="py-24 px-4 relative z-10 bg-dark-tide/50">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center justify-center mb-16 animate-on-scroll">
+                    <h2 class="text-4xl font-bold text-white text-center h-circuit tracking-widest">SYSTEM ARCHITECTURE
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Backend Card -->
+                    <article
+                        class="cyber-card p-8 group hover:border-fintech-gold/50 transition-all duration-500 animate-on-scroll delay-100"
+                        onmouseenter="addXP(100)">
+                        <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
+                            <h3 class="text-xl font-bold text-fintech-gold tracking-wider">CORE BANKING</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-fintech-gold" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <div class="space-y-6 font-mono text-sm">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-white">C# .NET / ASP.NET</span>
+                                    <span class="text-fintech-gold">EXPERT</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1 rounded-none">
+                                    <div class="bg-fintech-gold h-full w-[95%]"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">High-frequency transaction processing & Secure
+                                    Banking APIs.</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-white">ORACLE / SQL SERVER</span>
+                                    <span class="text-fintech-gold">ADVANCED</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1 rounded-none">
+                                    <div class="bg-fintech-gold h-full w-[90%]"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Financial Ledger integrity & ACID compliance.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Frontend Card -->
+                    <article
+                        class="cyber-card p-8 group hover:border-neon-blue/50 transition-all duration-500 animate-on-scroll delay-200"
+                        onmouseenter="addXP(100)">
+                        <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
+                            <h3 class="text-xl font-bold text-neon-blue tracking-wider">CLIENT DASHBOARDS</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neon-blue" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div class="space-y-6 font-mono text-sm">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-white">REACT / TYPESCRIPT</span>
+                                    <span class="text-neon-blue">EXPERT</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1 rounded-none">
+                                    <div class="bg-neon-blue h-full w-[98%]"></div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Real-time trading charts & Secure User
+                                    Interfaces.</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-white">TAILWIND CSS</span>
+                                    <span class="text-neon-blue">PRO</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1 rounded-none">
+                                    <div class="bg-neon-blue h-full w-[95%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Tools Card -->
+                    <article
+                        class="cyber-card p-8 group hover:border-neon-green/50 transition-all duration-500 animate-on-scroll delay-300"
+                        onmouseenter="addXP(100)">
+                        <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
+                            <h3 class="text-xl font-bold text-neon-green tracking-wider">SECURE OPS</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neon-green" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs">
+                            <span class="px-3 py-1 bg-slate-800 border border-slate-600 text-slate-300">PCI-DSS</span>
+                            <span class="px-3 py-1 bg-slate-800 border border-slate-600 text-slate-300">OWASP TOP
+                                10</span>
+                            <span class="px-3 py-1 bg-slate-800 border border-slate-600 text-slate-300">DOCKER</span>
+                            <span class="px-3 py-1 bg-slate-800 border border-slate-600 text-slate-300">CI/CD
+                                PIPELINES</span>
+                            <span class="px-3 py-1 bg-slate-800 border border-slate-600 text-slate-300">AWS /
+                                AZURE</span>
+                        </div>
+                        <p class="mt-6 text-sm text-slate-500 font-mono italic border-l-2 border-neon-green pl-3">
+                            Developed mission-critical modules for major Nigerian financial institutions.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-4 relative z-10">
+            <div class="max-w-3xl mx-auto cyber-card p-10 animate-on-scroll">
+                <div class="flex items-center mb-8">
+                    <div class="w-1.5 h-6 bg-fintech-gold mr-4"></div>
+                    <h2 class="text-2xl font-bold text-white tracking-widest">SECURE UPLINK</h2>
+                </div>
+
+                <form class="space-y-6 font-mono">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="group">
+                            <label class="block text-slate-500 text-xs mb-2 tracking-wider">IDENTIFIER</label>
+                            <input type="text"
+                                class="w-full bg-slate-900/50 border border-slate-700 focus:border-fintech-gold rounded-none p-4 text-white outline-none transition-colors"
+                                placeholder="Full Name" aria-label="Name">
+                        </div>
+                        <div class="group">
+                            <label class="block text-slate-500 text-xs mb-2 tracking-wider">DIGITAL CONTACT</label>
+                            <input type="email"
+                                class="w-full bg-slate-900/50 border border-slate-700 focus:border-fintech-gold rounded-none p-4 text-white outline-none transition-colors"
+                                placeholder="Email Address" aria-label="Email">
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="block text-slate-500 text-xs mb-2 tracking-wider">MESSAGE PACKET</label>
+                        <textarea
+                            class="w-full bg-slate-900/50 border border-slate-700 focus:border-fintech-gold rounded-none p-4 text-white outline-none transition-colors h-40 resize-none"
+                            placeholder="Enter transmission data..." aria-label="Message"></textarea>
+                    </div>
+                    <button type="button" onclick="burstEffect(event); addXP(1000)"
+                        class="w-full py-4 bg-white text-dark-tide font-bold tracking-[0.2em] hover:bg-fintech-gold transition-colors duration-300">
+                        TRANSMIT SECURELY
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer
+        class="py-8 text-center text-slate-600 text-xs font-mono relative z-10 border-t border-slate-800/50 bg-dark-tide">
+        <div class="mb-4 flex justify-center space-x-6">
+            <a href="#" class="hover:text-white transition-colors">GITHUB_REPO</a>
+            <a href="#" class="hover:text-white transition-colors">LINKEDIN_PROFILE</a>
+            <a href="#" class="hover:text-white transition-colors">TWITTER_FEED</a>
+        </div>
+        <p>&copy; 2026 BAMIDELE MUSIBAU. SYSTEMS ONLINE.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
