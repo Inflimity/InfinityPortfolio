@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
     initScrollAnimations();
     initTypewriter();
+    initSpotlight();
+    initCursor();
+    initScramble();
+    initTilt();
 });
 
 // --- Intersection Observer for Scroll Animations ---
@@ -215,4 +219,149 @@ function initParticles() {
     }
 
     animateBg();
+}
+
+// --- Mouse Spotlight ---
+function initSpotlight() {
+    const spotlight = document.getElementById('spotlight');
+    if (!spotlight) return;
+
+    window.addEventListener('mousemove', e => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+
+        spotlight.style.setProperty('--mouse-x', `${x}%`);
+        spotlight.style.setProperty('--mouse-y', `${y}%`);
+    });
+}
+
+// --- Custom Cursor ---
+function initCursor() {
+    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursor-dot');
+    if (!cursor || !cursorDot) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    window.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Instant dot movement
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+    });
+
+    // Lerp for outer ring
+    function animateCursor() {
+        const distX = mouseX - cursorX;
+        const distY = mouseY - cursorY;
+
+        cursorX += distX * 0.2;
+        cursorY += distY * 0.2;
+
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Hover effects
+    const hoverTargets = document.querySelectorAll('.hover-trigger');
+    hoverTargets.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('scale-150', 'bg-neon-blue/10', 'border-fintech-gold');
+            cursor.classList.remove('border-neon-blue');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('scale-150', 'bg-neon-blue/10', 'border-fintech-gold');
+            cursor.classList.add('border-neon-blue');
+        });
+    });
+}
+
+// --- Hacker Text Scramble ---
+function initScramble() {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+
+    // Scramble on load
+    const elements = document.querySelectorAll('.data-scramble');
+
+    elements.forEach(el => {
+        const originalText = el.innerText;
+        let iterations = 0;
+
+        // Wait for element to be visible
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start scramble
+                    const interval = setInterval(() => {
+                        el.innerText = originalText
+                            .split("")
+                            .map((letter, index) => {
+                                if (index < iterations) {
+                                    return originalText[index];
+                                }
+                                return letters[Math.floor(Math.random() * 26)];
+                            })
+                            .join("");
+
+                        if (iterations >= originalText.length) {
+                            clearInterval(interval);
+                            el.innerText = originalText; // Ensure final text is clean
+                        }
+
+                        iterations += 1 / 3; // Speed
+                    }, 30);
+
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(el);
+    });
+}
+
+// --- 3D Card Tilt ---
+function initTilt() {
+    const cards = document.querySelectorAll('.tilt-card');
+
+    cards.forEach(card => {
+        // Add glare element
+        const glare = document.createElement('div');
+        glare.classList.add('tilt-glare');
+        card.appendChild(glare);
+
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Calculate center
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Normalize (-1 to 1)
+            const rotateX = ((y - centerY) / centerY) * -10; // Invert Y for correct tilt 
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+
+            // Glare effect
+            glare.style.opacity = '1';
+            glare.style.transform = `translate(${x}px, ${y}px)`; // Simple follow for now, or gradient shift
+            glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent 40%)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            glare.style.opacity = '0';
+        });
+    });
 }

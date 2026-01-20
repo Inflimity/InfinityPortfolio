@@ -55,13 +55,20 @@
 
     <!-- Visual Overlays -->
     <div class="scanlines"></div>
+    <div id="spotlight" class="fixed inset-0 pointer-events-none z-0"></div> <!-- Spotlight Overlay -->
+    <div id="cursor"
+        class="fixed w-6 h-6 border-2 border-neon-blue rounded-full pointer-events-none z-[100] transition-transform duration-100 ease-out hidden md:block">
+    </div> <!-- Custom Cursor -->
+    <div id="cursor-dot" class="fixed w-1 h-1 bg-fintech-gold rounded-full pointer-events-none z-[100] hidden md:block">
+    </div>
+
     <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-10 opacity-30"></canvas>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-dark-tide/90 backdrop-blur-md border-b border-white/10 p-4 transition-all duration-300"
         id="main-nav">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4 group cursor-pointer">
+            <div class="flex items-center space-x-4 group cursor-pointer hover-trigger">
                 <div
                     class="w-10 h-10 bg-fintech-gold/10 rounded-none border border-fintech-gold flex items-center justify-center relative overflow-hidden">
                     <span class="font-mono font-bold text-fintech-gold z-10">SM</span>
@@ -71,11 +78,14 @@
             </div>
 
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-sm font-mono hover:text-neon-blue transition-colors tracking-wider">[01.
+                <a href="#about"
+                    class="text-sm font-mono hover:text-neon-blue transition-colors tracking-wider hover-trigger">[01.
                     PROFILE]</a>
                 <a href="#skills"
-                    class="text-sm font-mono hover:text-fintech-gold transition-colors tracking-wider">[02. STACK]</a>
-                <a href="#contact" class="text-sm font-mono hover:text-neon-green transition-colors tracking-wider">[03.
+                    class="text-sm font-mono hover:text-fintech-gold transition-colors tracking-wider hover-trigger">[02.
+                    STACK]</a>
+                <a href="#contact"
+                    class="text-sm font-mono hover:text-neon-green transition-colors tracking-wider hover-trigger">[03.
                     UPLINK]</a>
             </div>
 
@@ -104,7 +114,7 @@
 
                 <h1
                     class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight animate-fade-in delay-100">
-                    ENGINEERING THE<br>
+                    <span class="data-scramble">ENGINEERING THE</span><br>
                     <span class="text-fintech-gold typewriter" data-text="FUTURE OF FINANCE"></span>
                     <span class="animate-blink text-fintech-gold">_</span>
                 </h1>
@@ -119,11 +129,11 @@
 
                 <div class="flex flex-wrap justify-center gap-6 animate-fade-in delay-300">
                     <a href="#contact" onmouseenter="addXP(50)" onclick="burstEffect(event); addXP(500)"
-                        class="group relative px-10 py-4 bg-fintech-gold text-dark-tide font-bold hover:bg-white transition-all duration-300 overflow-hidden skew-x-[-10deg]">
+                        class="group relative px-10 py-4 bg-fintech-gold text-dark-tide font-bold hover:bg-white transition-all duration-300 overflow-hidden skew-x-[-10deg] hover-trigger hover:scale-105">
                         <span class="relative block skew-x-[10deg]">INITIATE PROTOCOL</span>
                     </a>
                     <a href="#skills" onmouseenter="addXP(25)"
-                        class="px-10 py-4 border border-slate-600 text-slate-300 hover:border-neon-blue hover:text-neon-blue transition-all duration-300 skew-x-[-10deg]">
+                        class="px-10 py-4 border border-slate-600 text-slate-300 hover:border-neon-blue hover:text-neon-blue transition-all duration-300 skew-x-[-10deg] hover-trigger hover:scale-105">
                         <span class="block skew-x-[10deg] font-mono text-sm">VIEW ARCHITECTURE</span>
                     </a>
                 </div>
@@ -134,15 +144,16 @@
         <section id="skills" class="py-24 px-4 relative z-10 bg-dark-tide/50">
             <div class="max-w-7xl mx-auto">
                 <div class="flex items-center justify-center mb-16 animate-on-scroll">
-                    <h2 class="text-4xl font-bold text-white text-center h-circuit tracking-widest">SYSTEM ARCHITECTURE
+                    <h2 class="text-4xl font-bold text-white text-center h-circuit tracking-widest data-scramble">SYSTEM
+                        ARCHITECTURE
                     </h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Backend Card -->
                     <article
-                        class="cyber-card p-8 group hover:border-fintech-gold/50 transition-all duration-500 animate-on-scroll delay-100"
-                        onmouseenter="addXP(100)">
+                        class="cyber-card p-8 group hover:border-fintech-gold/50 transition-all duration-500 animate-on-scroll delay-100 tilt-card"
+                        onmouseenter="addXP(100)" data-tilt>
                         <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
                             <h3 class="text-xl font-bold text-fintech-gold tracking-wider">CORE BANKING</h3>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-fintech-gold" fill="none"
@@ -179,8 +190,8 @@
 
                     <!-- Frontend Card -->
                     <article
-                        class="cyber-card p-8 group hover:border-neon-blue/50 transition-all duration-500 animate-on-scroll delay-200"
-                        onmouseenter="addXP(100)">
+                        class="cyber-card p-8 group hover:border-neon-blue/50 transition-all duration-500 animate-on-scroll delay-200 tilt-card"
+                        onmouseenter="addXP(100)" data-tilt>
                         <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
                             <h3 class="text-xl font-bold text-neon-blue tracking-wider">CLIENT DASHBOARDS</h3>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neon-blue" fill="none"
@@ -216,8 +227,8 @@
 
                     <!-- Tools Card -->
                     <article
-                        class="cyber-card p-8 group hover:border-neon-green/50 transition-all duration-500 animate-on-scroll delay-300"
-                        onmouseenter="addXP(100)">
+                        class="cyber-card p-8 group hover:border-neon-green/50 transition-all duration-500 animate-on-scroll delay-300 tilt-card"
+                        onmouseenter="addXP(100)" data-tilt>
                         <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
                             <h3 class="text-xl font-bold text-neon-green tracking-wider">SECURE OPS</h3>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neon-green" fill="none"
@@ -246,10 +257,10 @@
 
         <!-- Contact Section -->
         <section id="contact" class="py-24 px-4 relative z-10">
-            <div class="max-w-3xl mx-auto cyber-card p-10 animate-on-scroll">
+            <div class="max-w-3xl mx-auto cyber-card p-10 animate-on-scroll tilt-card" data-tilt>
                 <div class="flex items-center mb-8">
                     <div class="w-1.5 h-6 bg-fintech-gold mr-4"></div>
-                    <h2 class="text-2xl font-bold text-white tracking-widest">SECURE UPLINK</h2>
+                    <h2 class="text-2xl font-bold text-white tracking-widest data-scramble">SECURE UPLINK</h2>
                 </div>
 
                 <form class="space-y-6 font-mono">
@@ -285,9 +296,9 @@
     <footer
         class="py-8 text-center text-slate-600 text-xs font-mono relative z-10 border-t border-slate-800/50 bg-dark-tide">
         <div class="mb-4 flex justify-center space-x-6">
-            <a href="#" class="hover:text-white transition-colors">GITHUB_REPO</a>
-            <a href="#" class="hover:text-white transition-colors">LINKEDIN_PROFILE</a>
-            <a href="#" class="hover:text-white transition-colors">TWITTER_FEED</a>
+            <a href="#" class="hover:text-white transition-colors hover-trigger">GITHUB_REPO</a>
+            <a href="#" class="hover:text-white transition-colors hover-trigger">LINKEDIN_PROFILE</a>
+            <a href="#" class="hover:text-white transition-colors hover-trigger">TWITTER_FEED</a>
         </div>
         <p>&copy; 2026 BAMIDELE MUSIBAU. SYSTEMS ONLINE.</p>
     </footer>
