@@ -79,7 +79,10 @@
 
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about"
-                    class="text-sm font-mono hover:text-neon-blue transition-colors tracking-wider hover-trigger">[01.
+                    class="text-sm font-mono hover:text-neon-blue transition-colors tracking-wider hover-trigger">[00.
+                    INIT]</a>
+                <a href="#profile"
+                    class="text-sm font-mono hover:text-fintech-gold transition-colors tracking-wider hover-trigger">[01.
                     PROFILE]</a>
                 <a href="#skills"
                     class="text-sm font-mono hover:text-fintech-gold transition-colors tracking-wider hover-trigger">[02.
@@ -135,10 +138,119 @@
                         class="group relative px-10 py-4 bg-fintech-gold text-dark-tide font-bold hover:bg-white transition-all duration-300 overflow-hidden skew-x-[-10deg] hover-trigger hover:scale-105">
                         <span class="relative block skew-x-[10deg]">INITIATE PROTOCOL</span>
                     </a>
-                    <a href="#skills" onmouseenter="addXP(25)"
+                    <a href="#profile" onmouseenter="addXP(25)"
                         class="px-10 py-4 border border-slate-600 text-slate-300 hover:border-neon-blue hover:text-neon-blue transition-all duration-300 skew-x-[-10deg] hover-trigger hover:scale-105">
-                        <span class="block skew-x-[10deg] font-mono text-sm">VIEW ARCHITECTURE</span>
+                        <span class="block skew-x-[10deg] font-mono text-sm">ACCESS DOSSIER</span>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile / Identity Record Section -->
+        <section id="profile" class="py-24 px-4 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center justify-center mb-16 animate-on-scroll">
+                    <h2 class="text-4xl font-bold text-white text-center h-circuit tracking-widest data-scramble">
+                        IDENTITY RECORD
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <!-- Profile Visual / Stats -->
+                    <div class="md:col-span-5 animate-on-scroll delay-100 tilt-card" data-tilt>
+                        <div
+                            class="cyber-card p-1 relative h-full min-h-[400px] flex items-center justify-center bg-slate-900/50">
+                            <!-- Placeholder Avatar / Graphic -->
+                            <div
+                                class="relative w-48 h-48 border-2 border-fintech-gold/30 rounded-full flex items-center justify-center mb-8 mx-auto">
+                                <div class="absolute inset-0 border-2 border-neon-blue/30 rounded-full animate-ping"
+                                    style="animation-duration: 3s;"></div>
+                                <span class="text-6xl text-fintech-gold font-mono font-bold">SM</span>
+                            </div>
+
+                            <div class="absolute bottom-8 left-0 w-full px-8 space-y-4">
+                                <div class="flex justify-between font-mono text-xs border-b border-white/10 pb-2">
+                                    <span class="text-slate-500">CLASS</span>
+                                    <span class="text-white">FULL STACK ARCHITECT</span>
+                                </div>
+                                <div class="flex justify-between font-mono text-xs border-b border-white/10 pb-2">
+                                    <span class="text-slate-500">ORIGIN</span>
+                                    <span class="text-white">LAGOS, NIGERIA</span>
+                                </div>
+                                <div class="flex justify-between font-mono text-xs border-b border-white/10 pb-2">
+                                    <span class="text-slate-500">EXP_LEVEL</span>
+                                    <span class="text-fintech-gold">GRADUATE + PRO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Bio / Tabs -->
+                    <div class="md:col-span-7 animate-on-scroll delay-200">
+                        <div class="flex flex-wrap gap-4 mb-8 border-b border-white/10 pb-4">
+                            <button
+                                class="tab-btn active text-sm font-mono font-bold text-fintech-gold hover:text-white transition-colors tracking-wider hover-trigger"
+                                onclick="switchTab('bio')">[ BIO_DATA ]</button>
+                            <button
+                                class="tab-btn text-sm font-mono font-bold text-slate-500 hover:text-white transition-colors tracking-wider hover-trigger"
+                                onclick="switchTab('mission')">[ MISSION_LOG ]</button>
+                            <button
+                                class="tab-btn text-sm font-mono font-bold text-slate-500 hover:text-white transition-colors tracking-wider hover-trigger"
+                                onclick="switchTab('edu')">[ EDUCATION ]</button>
+                        </div>
+
+                        <div id="bio" class="tab-content active text-slate-300 leading-relaxed font-mono">
+                            <p class="mb-4">
+                                <span class="text-neon-blue">></span> Initializing personality core...
+                            </p>
+                            <p class="mb-4">
+                                I am a <strong>Computer Engineering Graduate</strong> with a relentless drive for
+                                optimizing systems. My journey began with breaking down hardware and quickly evolved
+                                into architecting scalable software solutions for the financial sector.
+                            </p>
+                            <p>
+                                Unlike standard developers, I view code as infrastructure. Whether it's a high-frequency
+                                trading algorithm or a secure banking portal, I build with <span
+                                    class="text-fintech-gold">precision, security, and performance</span> in mind.
+                            </p>
+                        </div>
+
+                        <div id="mission" class="tab-content hidden text-slate-300 leading-relaxed font-mono">
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <span class="text-neon-green mr-4">>></span>
+                                    <span><strong>Optimize Financial Transactions:</strong> Reduce latency and improve
+                                        reliability for Nigerian FinTech users.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-neon-green mr-4">>></span>
+                                    <span><strong>Secure The Future:</strong> Implement military-grade security
+                                        standards (PCI-DSS) in everyday applications.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-neon-green mr-4">>></span>
+                                    <span><strong>Innovate UI/UX:</strong> Prove that financial tools can be beautiful,
+                                        responsive, and intuitive.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="edu" class="tab-content hidden text-slate-300 leading-relaxed font-mono">
+                            <div class="cyber-card p-6 border-l-4 border-fintech-gold mb-6">
+                                <h3 class="text-white font-bold text-lg mb-1">B.Sc. Computer Engineering</h3>
+                                <p class="text-slate-500 text-sm mb-4">University of Lagos (or similar placeholder) |
+                                    2021 - 2025</p>
+                                <p class="text-sm">
+                                    Focus on Embedded Systems, Software Architecture, and Network Security. Graduated
+                                    with Honors.
+                                </p>
+                            </div>
+                            <div class="space-y-2 text-sm text-slate-400">
+                                <div><span class="text-neon-blue">[CERT]</span> Azure Fundamentals (AZ-900)</div>
+                                <div><span class="text-neon-blue">[CERT]</span> React & Redux Advanced Concepts</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

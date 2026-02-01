@@ -365,3 +365,32 @@ function initTilt() {
         });
     });
 }
+
+// --- Profile Tabs ---
+window.switchTab = function (tabId) {
+    // Hide all contents
+    document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('active');
+    });
+
+    // Deactivate all buttons
+    document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active', 'text-fintech-gold');
+        el.classList.add('text-slate-500');
+    });
+
+    // Show target content
+    const target = document.getElementById(tabId);
+    if (target) {
+        target.classList.remove('hidden');
+        target.classList.add('active', 'animate-fade-in');
+    }
+
+    // Activate target button
+    const btn = event.currentTarget;
+    if (btn) {
+        btn.classList.add('active', 'text-fintech-gold');
+        btn.classList.remove('text-slate-500');
+    }
+}
